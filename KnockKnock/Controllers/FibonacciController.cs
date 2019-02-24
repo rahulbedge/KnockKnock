@@ -13,6 +13,13 @@ namespace KnockKnock.Controllers
     [ApiController]
     public class FibonacciController : ControllerBase
     {
+        private readonly INumberSeries _numberService;
+        public FibonacciController(INumberSeries numberSeries)
+        {
+            _numberService = numberSeries; 
+        }
+
+
         // GET: api/Fibonacci
         [HttpGet]
         [ProducesResponseType(typeof(long), StatusCodes.Status200OK)]
@@ -26,8 +33,7 @@ namespace KnockKnock.Controllers
                 // TODO: no content
                 return BadRequest();
             }
-            INumberSeries fib = new FibonacciService();
-            return Ok(fib.Generate(number));
+            return Ok(_numberService.Generate(number));
         }
     }
 }
