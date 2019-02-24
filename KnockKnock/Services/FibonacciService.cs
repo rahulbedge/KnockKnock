@@ -14,7 +14,7 @@ namespace KnockKnock.Services
         /// Fibonacci generator
         /// </summary>
         /// <param name="number"></param>
-        /// <returns></returns>
+        /// <returns>fib for the specified number</returns>
         public long Generate(long number)
         {
             long a = 0;
