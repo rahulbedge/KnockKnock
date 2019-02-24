@@ -3,9 +3,9 @@ using NUnit.Framework;
 
 namespace Tests
 {
-    public class FibonacciTest
+    public class FibonacciServiceTest
     {
-        INumberSeries _seriesService; 
+        private INumberSeries _seriesService; 
         [SetUp]
         public void Setup()
         {
