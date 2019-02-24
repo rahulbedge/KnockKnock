@@ -24,7 +24,7 @@ namespace KnockKnock.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(long), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<long> Get([FromQuery(Name = "n")] long number)
+        public IActionResult Get([FromQuery(Name = "n")] long number)
         {
             // check to catch the overflow of the long.
             //TODO: Check if we can use query filter 

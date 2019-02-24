@@ -17,6 +17,9 @@ namespace KnockKnock.Services
         /// <returns>fib for the specified number</returns>
         public long Generate(long number)
         {
+            if (number >= 93)
+                return -1;
+
             long a = 0;
             long b = 1;
             while (number-- > 1)
