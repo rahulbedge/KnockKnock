@@ -1,18 +1,18 @@
-﻿using KnockKnock.Interfaces;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Threading.Tasks;
-
+using KnockKnock.Interfaces;
 namespace KnockKnock.Services
 {
     public class TextService : ITextService
     {
         public string ReverseWords(string inputText)
         {
-
-
-            throw new NotImplementedException();
+            inputText = inputText.Trim(); 
+            if ( string.IsNullOrEmpty(inputText) || string.IsNullOrWhiteSpace(inputText))
+            {
+                return @""""; 
+            }
+            return string.Join(" ", inputText.Split(' ').Select(s => new String(s.Reverse().ToArray())));
         }
     }
 }
