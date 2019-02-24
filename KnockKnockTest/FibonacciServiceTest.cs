@@ -1,3 +1,4 @@
+using KnockKnock.Interfaces;
 using KnockKnock.Services;
 using NUnit.Framework;
 

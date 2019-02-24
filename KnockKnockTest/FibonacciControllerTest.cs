@@ -1,4 +1,5 @@
 using KnockKnock.Controllers;
+using KnockKnock.Interfaces;
 using KnockKnock.Services;
 using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;

@@ -1,4 +1,4 @@
-﻿namespace KnockKnock.Services
+﻿namespace KnockKnock.Interfaces
 {
     public interface INumberSeries
     {
