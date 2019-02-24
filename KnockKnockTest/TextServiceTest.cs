@@ -18,7 +18,7 @@ namespace Tests
         {
             string original = "This is a test";
             string reversed = _textService.ReverseWords(original);
-            Assert.AreEqual("This is a test", "sihT si a tset"); 
+            Assert.AreEqual("sihT si a tset", reversed); 
         }
 
         [Test]
@@ -26,7 +26,16 @@ namespace Tests
         {
             string original = string.Empty;
             string reversed = _textService.ReverseWords(original);
-            Assert.AreEqual("\"\"", string.Empty);
+            Assert.AreEqual(@"""", reversed);
         }
+
+        [Test]
+        public void ReverseWords_WhiteSpaceString_CorrectValue()
+        {
+            string original = "    ";
+            string reversed = _textService.ReverseWords(original);
+            Assert.AreEqual(@"""", reversed);
+        }
+
     }
 }
