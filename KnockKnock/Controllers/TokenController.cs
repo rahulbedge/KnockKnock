@@ -19,8 +19,7 @@ namespace KnockKnock.Controllers
         [ProducesResponseType(typeof(long), StatusCodes.Status200OK)]
         public IActionResult Get()
         {
-            //string token = "72e0b481-72b8-4fc9-bb7f-a259b4f92ae7"; 
-            string token = "72e0b481-72b8-4fc9-bbbb-a259b4f92abb"; 
+            string token = "72e0b481-72b8-4fc9-bb7f-a259b4f92ae7"; 
             return Ok(token);
         }
     }
