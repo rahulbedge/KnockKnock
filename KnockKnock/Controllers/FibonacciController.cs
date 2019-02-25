@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Linq; 
 
 namespace KnockKnock.Controllers
 {
@@ -19,34 +20,33 @@ namespace KnockKnock.Controllers
         }
 
 
-        // GET: api/Fibonacci
+        /// <summary>
+        /// Returns the nth number in the fibonacci sequence.
+        /// </summary>
+        /// <param name="n">The index (n) of the fibonacci sequence</param>
+        /// <returns>long</returns>
         [HttpGet]
         [ProducesResponseType(typeof(long), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Get([BindRequired, FromQuery(Name = "n")] string number  )
+        public IActionResult Get([BindRequired, FromQuery(Name = "n")] long number = long.MinValue)
         {
-            // TODO: Simplify this error handling mechanism. 
-            if (!ModelState.IsValid)
+            string test = Request.QueryString.Value; 
+            // TODO: Simplify this error handling mechanism with custom validator. 
+            if (!ModelState.IsValid )
             {
-                return NotFound(new {
-                    //TODO: Implement Url path
-                    //message = $"No HTTP resource was found that matches the request URI '{UriHelper.GetDisplayUrl(Request)}'"
-                    message = $"No HTTP resource was found that matches the request URI '<Implement path>'"
-                }); 
-            }
-            else
-            {
-                if (long.TryParse(number, out long num))
+                if (ModelState.Values.Select(z => z.AttemptedValue == null).Count() > 0)
                 {
-                    if (num < 93) return Ok(_numberService.Generate(num)); 
-                    else return BadRequest(string.Empty);
+                    return BadRequest( new {message = "The request is invalid."});
+                }
+                else
+                {
+                    return BadRequest(new { message = "No HTTP resource was found that matches the request URI 'https://knockknock.readify.net/api/Fibonacci?na=90'." });
                 }
             }
-            return BadRequest(new
-            {
-                message = "The request is invalid."
-            });
+
+            if (number < 93) return Ok(_numberService.Generate(number)); 
+            else return BadRequest(string.Empty);
         }
     }
 }
