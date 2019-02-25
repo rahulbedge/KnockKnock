@@ -9,18 +9,22 @@ namespace KnockKnock.Services
     /// <summary>
     /// Service for generating Fibonacci series
     /// </summary>
-    public class FibonacciService: INumberSeries
+    public class FibonacciService : INumberSeries
     {
-        /// <summary>
-        /// Fibonacci generator
-        /// </summary>
-        /// <param name="number"></param>
-        /// <returns>fib for the specified number</returns>
-        public long Generate(long number)
+        public bool Generate(long number, out long result)
         {
-            if (number >= 93)
-                return -1;
+            if (number >= 93 || number <= -93)
+            {
+                result = -1; 
+                return false;
+            }
 
+            bool isNegative = false;
+            if (number < 0)
+            {
+                isNegative = true;
+                number *= -1;
+            }
             long a = 0;
             long b = 1;
             while (number-- > 1)
@@ -30,7 +34,8 @@ namespace KnockKnock.Services
                 b += t;
             }
 
-            return b;
+            result = isNegative == true ? b *= -1 : b; 
+            return true;
         }
     }
 

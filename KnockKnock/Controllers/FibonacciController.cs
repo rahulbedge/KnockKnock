@@ -27,26 +27,25 @@ namespace KnockKnock.Controllers
         /// <returns>long</returns>
         [HttpGet]
         [ProducesResponseType(typeof(long), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Get([BindRequired, FromQuery(Name = "n")] long number = long.MinValue)
+        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
+        //[ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult Get([BindRequired, FromQuery(Name = "n")] long? number)
         {
-            string test = Request.QueryString.Value; 
-            // TODO: Simplify this error handling mechanism with custom validator. 
-            if (!ModelState.IsValid )
+            //TOD0: FIx and clean the error handling logic.
+            if (string.IsNullOrEmpty(Request.Query["n"]) )
             {
-                if (ModelState.Values.Select(z => z.AttemptedValue == null).Count() > 0)
-                {
-                    return BadRequest( new {message = "The request is invalid."});
-                }
-                else
-                {
-                    return BadRequest(new { message = "No HTTP resource was found that matches the request URI 'https://knockknock.readify.net/api/Fibonacci?na=90'." });
-                }
+                return NotFound(new { message = $"No HTTP resource was found that matches the request URI '{UriHelper.GetDisplayUrl(Request)}'." });
+            }
+            if ( number == null)
+            {
+                return BadRequest(new { message = "The request is invalid." });
             }
 
-            if (number < 93) return Ok(_numberService.Generate(number)); 
-            else return BadRequest(string.Empty);
+            if ( _numberService.Generate(number.Value, out long result) == true)
+            {
+                return Ok(result); 
+            }
+            return BadRequest("");
         }
     }
 }

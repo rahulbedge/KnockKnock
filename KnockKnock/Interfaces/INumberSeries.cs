@@ -2,6 +2,6 @@
 {
     public interface INumberSeries
     {
-        long Generate(long number); 
+        bool Generate(long number, out long result);
     }
 }

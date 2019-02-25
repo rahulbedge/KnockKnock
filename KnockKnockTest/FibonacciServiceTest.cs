@@ -14,24 +14,36 @@ namespace Tests
         }
 
         [Test]
+        public void Generate_NumberNeg10_CorrectValue()
+        {
+            bool success = _seriesService.Generate(-10, out long result);
+            Assert.AreEqual(-55, result, 0, "Fib results for 10");
+            Assert.True(success);
+        }
+
+
+        [Test]
         public void Generate_Number10_CorrectValue()
         {
-            long result = _seriesService.Generate(10);
-            Assert.AreEqual(55, result, 0, "Fib results for 10");  
+            bool success = _seriesService.Generate(10, out long result);
+            Assert.AreEqual(55, result, 0, "Fib results for 10");
+            Assert.True(success);
         }
 
         [Test]
         public void Generate_Number50_CorrectValue()
         {
-            long result = _seriesService.Generate(50);
+            bool success = _seriesService.Generate(50, out long result);
             Assert.AreEqual(12586269025, result, 0, "Fib results for 50");
+            Assert.True(success);
         }
 
         [Test]
-        public void Generate_Number93_Minus1()
+        public void Generate_Number93_ReturnFalse()
         {
-            long result = _seriesService.Generate(93);
+            bool success = _seriesService.Generate(93, out long result);
             Assert.AreEqual(-1, result, 0, "Fib results for 93");
+            Assert.False(success);
         }
     }
 }
