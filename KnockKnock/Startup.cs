@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using KnockKnock.Interfaces;
 using KnockKnock.Services;
@@ -27,8 +28,10 @@ namespace KnockKnock
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<INumberSeries, FibonacciService>();
+            services.AddScoped<ITextService, TextService>(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

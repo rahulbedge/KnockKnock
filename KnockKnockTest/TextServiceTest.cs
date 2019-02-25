@@ -26,7 +26,7 @@ namespace Tests
         {
             string original = string.Empty;
             string reversed = _textService.ReverseWords(original);
-            Assert.AreEqual(@"""", reversed);
+            Assert.AreEqual("", reversed);
         }
 
         [Test]
@@ -34,7 +34,7 @@ namespace Tests
         {
             string original = "    ";
             string reversed = _textService.ReverseWords(original);
-            Assert.AreEqual(@"""", reversed);
+            Assert.AreEqual("", reversed);
         }
 
     }
