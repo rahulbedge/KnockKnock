@@ -47,13 +47,7 @@ namespace KnockKnock
 
             services.AddScoped<INumberSeries, FibonacciService>();
             services.AddScoped<ITextService, TextService>();
-            services.AddScoped<IUrlHelper, UrlHelper>(implementationFactory =>
-            {
-                var actionContext =
-                    implementationFactory.GetService<IActionContextAccessor>()
-                    .ActionContext;
-                return new UrlHelper(actionContext);
-            });
+            services.AddScoped<ITriangleService, TriangleService>(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
