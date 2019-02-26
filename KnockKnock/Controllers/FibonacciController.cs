@@ -25,8 +25,8 @@ namespace KnockKnock.Controllers
         /// </summary>
         /// <param name="n">The index (n) of the fibonacci sequence</param>
         /// <returns>long</returns>
-        [ServiceFilter(typeof(ValidateFibonacciFilter))]
         [HttpGet]
+        [ServiceFilter(typeof(ValidateFibonacciFilter))]
         [ProducesResponseType(typeof(long), StatusCodes.Status200OK)]
         //[ProducesResponseType(StatusCodes.Status400BadRequest)]
         //[ProducesResponseType(StatusCodes.Status404NotFound)]
