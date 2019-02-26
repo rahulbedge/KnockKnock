@@ -47,9 +47,12 @@ namespace KnockKnock
             CompressionLevel.Fastest);
 
             services.AddScoped<ValidateFibonacciFilter>();
+            services.AddScoped<ValidateTriangleFilter>();
+
             services.AddScoped<INumberSeries, FibonacciService>();
             services.AddScoped<ITextService, TextService>();
-            services.AddScoped<ITriangleService, TriangleService>(); 
+            services.AddScoped<ITriangleService, TriangleService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
