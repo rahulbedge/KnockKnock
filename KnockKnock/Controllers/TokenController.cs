@@ -6,15 +6,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KnockKnock.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [Route("api/Token")]
     [ApiController]
     [Produces("application/json")]
     public class TokenController : ControllerBase
     {
-        public TokenController()
-        {
-        }
-
+        /// <summary>
+        /// Controller action method to return the readify token
+        /// </summary>
+        /// <returns>Redify token</returns>
         [HttpGet]
         [ProducesResponseType(typeof(long), StatusCodes.Status200OK)]
         public IActionResult Get()
