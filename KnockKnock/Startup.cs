@@ -1,6 +1,7 @@
 ﻿using System.IO.Compression;
 using KnockKnock.Interfaces;
 using KnockKnock.Services;
+using KnockKnock.Validators;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -45,6 +46,7 @@ namespace KnockKnock
             services.Configure<GzipCompressionProviderOptions>(options => options.Level =
             CompressionLevel.Fastest);
 
+            services.AddScoped<ValidateFibonacciFilter>();
             services.AddScoped<INumberSeries, FibonacciService>();
             services.AddScoped<ITextService, TextService>();
             services.AddScoped<ITriangleService, TriangleService>(); 
