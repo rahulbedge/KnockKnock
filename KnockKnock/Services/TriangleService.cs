@@ -8,24 +8,24 @@ namespace KnockKnock.Services
 {
     public class TriangleService : ITriangleService
     {
-        public TriangleType DetectTriangle(int a, int b, int c)
+        public string DetectTriangle(int a, int b, int c)
         {
             if (((a <= 0 || b <= 0 || c <= 0)) ||
                 !(a + b > c && a + c > b && b + c > a))
             {
-                return TriangleType.Error;
+                return TriangleType.Error.ToString();
             }
             if (a == b && a == c)
             {
-                return TriangleType.Equilateral;
+                return TriangleType.Equilateral.ToString();
             }
             else if (a == b || a == c || b == c)
             {
-                return TriangleType.Isosceles;
+                return TriangleType.Isosceles.ToString();
             }
             else
             {
-                return TriangleType.Scalene;
+                return TriangleType.Scalene.ToString();
             }
         }
     }

@@ -7,6 +7,6 @@ namespace KnockKnock.Interfaces
 {
     public interface ITriangleService
     {
-        TriangleType DetectTriangle(int a, int b, int c); 
+        string DetectTriangle(int a, int b, int c); 
     }
 }

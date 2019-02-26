@@ -4,6 +4,7 @@ using KnockKnock.Validators;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace KnockKnock.Controllers
 {
@@ -31,7 +32,7 @@ namespace KnockKnock.Controllers
         [ProducesResponseType(typeof(long), StatusCodes.Status200OK)]
         public IActionResult Get([FromQuery] int a, int b, int c)
         {
-            return Ok(_triangleService.DetectTriangle(a, b, c).ToString());
+            return Ok(_triangleService.DetectTriangle(a, b, c));
         }
     }
 }
